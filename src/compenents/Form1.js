@@ -1,8 +1,11 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 
 function Form1() {
+    const navigate=useNavigate()
     const [newStudent, setnewStudent] = useState({
         firstName: "",
         lastName: "",
@@ -48,7 +51,35 @@ function Form1() {
             toast.error('password required')
             return
         }
-        toast.success('Form Submitted')
+        
+            if (newStudent.Location===""){
+                toast.error('location required')
+                return
+        }
+        if (newStudent.Hobby.length<=0){
+            toast.error('Hobbt required')
+            return
+        }
+        axios.post('https://6526013c67cfb1e59ce7cecd.mockapi.io/Students',newStudent).then((res)=>{
+            if(res.status===201){
+                toast.success('Form Submitted')
+
+                setnewStudent({
+                    firstName: "",
+                    lastName: "",
+                    email: "",
+                    password: "",
+                    Location: "",
+                    Hobby: [],
+        
+                })
+                setlist([...list, newStudent])
+            }
+
+
+        }).catch((error)=>{
+            console.log(error);
+        })
         setnewStudent({
             firstName: "",
             lastName: "",
@@ -59,6 +90,7 @@ function Form1() {
 
         })
         setlist([...list, newStudent])
+        navigate('/students')
     }
     console.log(newStudent)
     return (

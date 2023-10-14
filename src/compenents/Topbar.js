@@ -46,6 +46,11 @@ function Topbar() {
           <a class="nav-link ">Forms1</a>
         </li>
        </Link>
+       <Link to={'/students'}>
+       <li class="nav-item">
+          <a class="nav-link ">StudentList</a>
+        </li>
+       </Link>
        
         
         
