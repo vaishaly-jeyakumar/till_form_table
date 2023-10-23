@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import usercontext from '../Context/Context'
 
 function Pricing() {
+  const value = useContext(usercontext)
   const data = [
     {
       Heading: 'Free',
@@ -21,6 +23,7 @@ function Pricing() {
   return (
     <section class="pricing py-5">
       <div class="container">
+        <h3>{value}</h3>
         <div class="row">
           {
             data.map((list) => {

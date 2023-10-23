@@ -15,11 +15,13 @@ import { Toaster } from 'react-hot-toast';
 import StudentList from './compenents/StudentList';
 import StudentView from './compenents/StudentView';
 import Task1 from './compenents/Task1';
+import { Provider } from './Context/Context';
 
 
 function App() {
   return (
     <BrowserRouter>
+    <Provider value={'Vaishaly'}>
     <Topbar />
       <Routes>
         <Route path='/Home' element={<Home/>}/>
@@ -38,6 +40,7 @@ function App() {
       
       
       </Routes>
+      </Provider>
       <Toaster   position="bottom-center"  toastOptions={{
     // Define default options
     className: '',

@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import usercontext from '../Context/Context'
 
 function Dashboard() {
+    const value= useContext(usercontext)
+    console.log(value)
     const data = [
         {
             name: 'Primary Card',
@@ -21,6 +24,7 @@ function Dashboard() {
     ]
     return (
         <div className='container my-5'>
+            <h3>{value}</h3>
             <div className='row'>
                 {
                     data.map((card) => {
