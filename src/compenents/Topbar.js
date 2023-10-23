@@ -51,6 +51,11 @@ function Topbar() {
           <a class="nav-link ">StudentList</a>
         </li>
        </Link>
+       <Link to={'/task1'}>
+       <li class="nav-item">
+          <a class="nav-link ">Task1</a>
+        </li>
+       </Link>
        
         
         

@@ -47,6 +47,11 @@ function Form1() {
             toast.error('email required')
             return
         }
+        // if (!checkemail(newStudent.email)){
+        //     toast.error('invalid email')
+        //     return
+        // }
+    
         if (newStudent.password === "") {
             toast.error('password required')
             return
@@ -57,7 +62,7 @@ function Form1() {
                 return
         }
         if (newStudent.Hobby.length<=0){
-            toast.error('Hobbt required')
+            toast.error('Hobby required')
             return
         }
         axios.post('https://6526013c67cfb1e59ce7cecd.mockapi.io/Students',newStudent).then((res)=>{
@@ -121,6 +126,17 @@ function Form1() {
                     <div className='col-6'>
                         <label class="form-label">Hobbies</label>
                         <Select isMulti options={hobbyoption} value={hobbyoption.filter((op) => { return newStudent.Hobby.some((pt) => op.value === pt) })} onChange={(e) => setnewStudent({ ...newStudent, Hobby: e.map((hobby) => hobby.value) })} />
+                    </div>
+                    <div className='col-6 my-5'>
+                        <div>
+                            <input type='radio' id='check1' value={'Male'} checked={newStudent.gender==='Male'} onChange={(e)=>{setnewStudent({...newStudent,gender:e.target.value})}}  />
+                            <label>Male</label>
+                        </div>
+                        <div>
+                            <input type='radio' id='check2' value={'Female'} checked={newStudent.gender==='Female'}  onChange={(e)=>{setnewStudent({...newStudent,gender:e.target.value})}}/>
+                            <label>Female</label>
+                        </div>
+
                     </div>
 
                 </div>

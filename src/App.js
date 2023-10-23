@@ -14,6 +14,7 @@ import Form1 from './compenents/Form1';
 import { Toaster } from 'react-hot-toast';
 import StudentList from './compenents/StudentList';
 import StudentView from './compenents/StudentView';
+import Task1 from './compenents/Task1';
 
 
 function App() {
@@ -26,6 +27,8 @@ function App() {
         <Route path='/Hooks' element={<Hooks />}/>
         <Route path='/Forms' element={<Forms/>}/>
         <Route path='Form1' element={<Form1/>}/>
+        <Route path='task1' element={<Task1/>}/>
+
         <Route path='students' element={<StudentList/>}/>
         <Route path='students/:id' element={<StudentView/>}/>
         <Route path='Pricing' element={ <Pricing />}/>
