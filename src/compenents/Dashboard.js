@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import usercontext from '../Context/Context'
+import { useNavigate } from 'react-router-dom'
 
 function Dashboard() {
     const value= useContext(usercontext)
     console.log(value)
+    const navigate=useNavigate()
     const data = [
         {
             name: 'Primary Card',
@@ -36,7 +38,7 @@ function Dashboard() {
                                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
 
                                 </div>
-                                <div class="card-header">
+                                <div class="card-header" onClick={()=>navigate('/students',{state:{dashboard:data}})}>
                                     Featured
                                 </div>
                             </div>

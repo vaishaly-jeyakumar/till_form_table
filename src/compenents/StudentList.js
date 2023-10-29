@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Select from 'react-select'
 import { Modal, ModalBody, ModalFooter, ModalHeader, Popover, PopoverBody, PopoverHeader, Toast } from 'reactstrap'
 
@@ -10,6 +10,8 @@ function StudentList() {
     const [loading, setloading] = useState((true))
     const [deleteid, setdeleteid] = useState('')
     const [editmodal, seteditmodal]=useState(false)
+    const location = useLocation()
+    console.log(location?.state?.dashboard)
     const [editdata, seteditdata]=useState({})
     
     const navigate = useNavigate()
@@ -113,7 +115,7 @@ function StudentList() {
                                         <td>{list.Location}</td>
                                         
                                         <td>{list.Hobby.join(',')}</td>
-                                        <td>{list.Gender}</td>
+                                        <td>{list.gender}</td>
                                         <td>
                                             <button className='btn btn-sm btn-outline-primary' onClick={() => navigate(`/students/${list.id}`)}>View</button>
                                             <button className='btn btn-sm btn-outline-warning'onClick={()=>onedit(list)}>Edit</button>

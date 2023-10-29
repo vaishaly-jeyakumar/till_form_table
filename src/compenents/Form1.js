@@ -29,6 +29,25 @@ function Form1() {
         { label: 'Drawing', value: 'Drawing' },
     ]
     const [list, setlist] = useState([])
+    const checkemail=(email)=>{
+        const pattern=/^[^\.\s][\w\-]+(\.[\w\-]+)*@([\w-]+\.)+[\w-]{2,}$/
+        if(pattern.test(email)){
+            return true
+        }
+        return false
+    }
+    const checkpassword=(password)=>{
+        const pattern=/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
+
+
+
+        if(pattern.test(password)){
+            return true
+        }
+        return false
+    }
+
+    
     const handlechange = (e) => {
         // console.log(e.target.name,e.target.value)//
         setnewStudent({ ...newStudent, [e.target.name]: e.target.value })
@@ -47,13 +66,17 @@ function Form1() {
             toast.error('email required')
             return
         }
-        // if (!checkemail(newStudent.email)){
-        //     toast.error('invalid email')
-        //     return
-        // }
+        if (!checkemail(newStudent.email)){
+            toast.error('invalid email')
+            return
+        }
     
         if (newStudent.password === "") {
             toast.error('password required')
+            return
+        }
+        if (!checkpassword(newStudent.password)){
+            toast.error('Minimum eight characters, at least one letter, one number and one special character:')
             return
         }
         
